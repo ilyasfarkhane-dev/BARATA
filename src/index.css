@@ -1,0 +1,270 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Monogram Dark Theme Colors */
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 7%;
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 7%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 156 100% 41%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 0 0% 7%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 60%;
+    --accent: 156 100% 41%;
+    --accent-foreground: 0 0% 0%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 13%;
+    --input: 0 0% 13%;
+    --ring: 156 100% 41%;
+    --radius: 0.5rem;
+
+    /* Custom Properties */
+    --color-bg-primary: #000000;
+    --color-bg-secondary: #111111;
+    --color-accent: #00D084;
+    --color-accent-dark: #00A065;
+    --color-text-primary: #FFFFFF;
+    --color-text-secondary: #999999;
+    --color-border: #222222;
+    --color-hover: #1A1A1A;
+
+    /* Easing Functions */
+    --ease-expo-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-expo-in: cubic-bezier(0.7, 0, 0.84, 0);
+    --ease-elastic: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    --ease-liquid: cubic-bezier(0.23, 1, 0.32, 1);
+
+    /* Durations */
+    --duration-micro: 150ms;
+    --duration-fast: 300ms;
+    --duration-normal: 500ms;
+    --duration-slow: 800ms;
+
+    /* Spacing */
+    --section-padding: 120px;
+    --container-max: 1200px;
+    --sidebar-width: 280px;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer utilities {
+  /* Custom Animations */
+  @keyframes float-gentle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes float-medium {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(2deg); }
+  }
+
+  @keyframes pulse-subtle {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+  }
+
+  @keyframes bounce-scroll {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(8px); }
+  }
+
+  @keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  @keyframes glow-pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.8; }
+  }
+
+  .animate-float-gentle {
+    animation: float-gentle 6s ease-in-out infinite;
+  }
+
+  .animate-float-medium {
+    animation: float-medium 8s ease-in-out infinite;
+  }
+
+  .animate-pulse-subtle {
+    animation: pulse-subtle 4s ease-in-out infinite;
+  }
+
+  .animate-bounce-scroll {
+    animation: bounce-scroll 1.5s ease-in-out infinite;
+  }
+
+  .animate-gradient-shift {
+    animation: gradient-shift 8s ease infinite;
+    background-size: 200% 200%;
+  }
+
+  .animate-glow-pulse {
+    animation: glow-pulse 3s ease-in-out infinite;
+  }
+
+  /* Text Gradient */
+  .text-gradient {
+    background: linear-gradient(135deg, #00D084 0%, #00A065 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Glass Effect */
+  .glass {
+    background: rgba(17, 17, 17, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  /* Glow Effects */
+  .glow-accent {
+    box-shadow: 0 0 20px rgba(0, 208, 132, 0.3);
+  }
+
+  .glow-accent-strong {
+    box-shadow: 0 0 40px rgba(0, 208, 132, 0.5);
+  }
+
+  /* Hide scrollbar */
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Dashboard Quill editor dark theme */
+.dashboard-quill-editor .ql-toolbar {
+  background: #111 !important;
+  border-color: #333 !important;
+}
+.dashboard-quill-editor .ql-container {
+  background: #111 !important;
+  border-color: #333 !important;
+}
+.dashboard-quill-editor .ql-editor {
+  min-height: 140px;
+  color: #fff;
+}
+.dashboard-quill-editor .ql-editor.ql-blank::before {
+  color: #555;
+}
+.dashboard-quill-editor .ql-stroke {
+  stroke: #444 !important;
+}
+.dashboard-quill-editor .ql-picker-label,
+.dashboard-quill-editor .ql-picker-options {
+  color: #999 !important;
+}
+.dashboard-quill-editor .ql-snow .ql-picker-label:hover .ql-stroke,
+.dashboard-quill-editor .ql-snow .ql-toolbar button:hover .ql-stroke {
+  stroke: #00D084 !important;
+}
+.dashboard-quill-editor .ql-snow .ql-toolbar button.ql-active .ql-stroke {
+  stroke: #00D084 !important;
+}
+.dashboard-quill-editor .ql-fill {
+  fill: #999 !important;
+}
+.dashboard-quill-editor .ql-snow .ql-toolbar button:hover .ql-fill {
+  fill: #00D084 !important;
+}
+
+/* Tiptap rich text editor - show formatting in editor */
+.rich-text-editor .ProseMirror {
+  min-height: 160px;
+  outline: none;
+}
+.rich-text-editor .ProseMirror h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+.rich-text-editor .ProseMirror h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-top: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+.rich-text-editor .ProseMirror strong,
+.rich-text-editor .ProseMirror b {
+  font-weight: 700;
+}
+.rich-text-editor .ProseMirror em,
+.rich-text-editor .ProseMirror i {
+  font-style: italic;
+}
+.rich-text-editor .ProseMirror s {
+  text-decoration: line-through;
+}
+.rich-text-editor .ProseMirror ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin: 0.5rem 0;
+}
+.rich-text-editor .ProseMirror ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+  margin: 0.5rem 0;
+}
+.rich-text-editor .ProseMirror li {
+  margin: 0.25rem 0;
+}
+.rich-text-editor .ProseMirror p {
+  margin: 0.25rem 0;
+}
+.rich-text-editor .ProseMirror a {
+  color: #00D084;
+  text-decoration: underline;
+}
+.rich-text-editor .ProseMirror p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  color: #555;
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
