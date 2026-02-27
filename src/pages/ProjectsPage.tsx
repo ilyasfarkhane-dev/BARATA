@@ -22,9 +22,11 @@ export function ProjectsPage() {
   }, [activeFilter, projects]);
 
   useEffect(() => {
-    if (!gridRef.current) return;
+    const grid = gridRef.current;
+    if (!grid) return;
     const ctx = gsap.context(() => {
-      gsap.fromTo(gridRef.current?.querySelectorAll('.project-card'),
+      const cards = grid.querySelectorAll('.project-card');
+      gsap.fromTo(cards,
         { y: 30, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.5, stagger: 0.1, ease: 'power4.out' }
       );
