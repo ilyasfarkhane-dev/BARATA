@@ -178,7 +178,7 @@ export function NavigationNavbar() {
                     ) : (
                       <Link to={`/#${sectionId}`} onClick={() => setIsOpen(false)} className={className}>
                         <Icon size={16} className="transition-transform duration-300 group-hover:scale-110" />
-                        <span className="font-medium">{link.name}hh</span>
+                        <span className="font-medium">{link.name}</span>
                       </Link>
                     )}
                   </li>
