@@ -77,7 +77,7 @@ export function Footer() {
               to="/dashboard"
               className="text-sm text-[#666] transition-all duration-200 hover:text-[#00D084] relative group"
             >
-              Dashboardhghghh
+              Dashboard
               <span className="absolute bottom-0 left-0 w-0 h-px bg-[#00D084] transition-all duration-200 group-hover:w-full" />
             </Link>
            
