@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Mail, Phone, MapPin, Twitter, Linkedin, Dribbble, Github, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Twitter, Linkedin, Dribbble, Github } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import { useProjects } from '../context/ProjectsContext';
 
@@ -30,10 +30,6 @@ export function ContactSection() {
   const subheadlineRef = useRef<HTMLParagraphElement>(null);
   const infoRef = useRef<HTMLDivElement>(null);
   const socialRef = useRef<HTMLDivElement>(null);
-  const formRef = useRef<HTMLFormElement>(null);
-  const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
-  const [focusedField, setFocusedField] = useState<string | null>(null);
-
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Split headline
@@ -95,46 +91,10 @@ export function ContactSection() {
           '-=0.2'
         );
       }
-
-      // Form
-      if (formRef.current) {
-        tl.fromTo(formRef.current,
-          { x: 50, opacity: 0 },
-          { x: 0, opacity: 1, duration: 0.7, ease: 'power4.out' },
-          0.3
-        );
-
-        // Form inputs
-        const inputs = formRef.current.querySelectorAll('.form-field');
-        tl.fromTo(inputs,
-          { y: 20, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.4, stagger: 0.08, ease: 'power2.out' },
-          '-=0.4'
-        );
-
-        // Submit button
-        const submitBtn = formRef.current.querySelector('button[type="submit"]');
-        tl.fromTo(submitBtn,
-          { scale: 0.9, opacity: 0 },
-          { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)' },
-          '-=0.2'
-        );
-      }
     }, sectionRef);
 
     return () => ctx.revert();
   }, [contact]);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission
-    alert('Thank you for your message! I will get back to you soon.');
-    setFormData({ name: '', email: '', subject: '', message: '' });
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
-  };
 
   return (
     <section
@@ -154,8 +114,7 @@ export function ContactSection() {
       />
 
       <div className="max-w-[1200px] mx-auto px-6 lg:px-12">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
-          {/* Left Column - Info */}
+        <div className="max-w-2xl mx-auto">
           <div>
             <span
               ref={labelRef}
@@ -219,117 +178,6 @@ export function ContactSection() {
               </div>
             </div>
           </div>
-
-          {/* Right Column - Form */}
-          <form
-            ref={formRef}
-            onSubmit={handleSubmit}
-            className="space-y-6"
-          >
-            <div className="grid sm:grid-cols-2 gap-6">
-              {/* Name */}
-              <div className="form-field relative">
-                <label
-                  className={`absolute left-4 transition-all duration-200 pointer-events-none ${
-                    focusedField === 'name' || formData.name
-                      ? 'top-2 text-xs text-[#00D084]'
-                      : 'top-1/2 -translate-y-1/2 text-[#666]'
-                  }`}
-                >
-                  Your Name
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  onFocus={() => setFocusedField('name')}
-                  onBlur={() => setFocusedField(null)}
-                  className="w-full pt-6 pb-3 px-4 bg-black border border-[#222] rounded-xl text-white outline-none transition-all duration-200 focus:border-[#00D084] focus:shadow-[0_0_20px_rgba(0,208,132,0.1)]"
-                  required
-                />
-              </div>
-
-              {/* Email */}
-              <div className="form-field relative">
-                <label
-                  className={`absolute left-4 transition-all duration-200 pointer-events-none ${
-                    focusedField === 'email' || formData.email
-                      ? 'top-2 text-xs text-[#00D084]'
-                      : 'top-1/2 -translate-y-1/2 text-[#666]'
-                  }`}
-                >
-                  Your Email
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  onFocus={() => setFocusedField('email')}
-                  onBlur={() => setFocusedField(null)}
-                  className="w-full pt-6 pb-3 px-4 bg-black border border-[#222] rounded-xl text-white outline-none transition-all duration-200 focus:border-[#00D084] focus:shadow-[0_0_20px_rgba(0,208,132,0.1)]"
-                  required
-                />
-              </div>
-            </div>
-
-            {/* Subject */}
-            <div className="form-field relative">
-              <label
-                className={`absolute left-4 transition-all duration-200 pointer-events-none ${
-                  focusedField === 'subject' || formData.subject
-                    ? 'top-2 text-xs text-[#00D084]'
-                    : 'top-1/2 -translate-y-1/2 text-[#666]'
-                }`}
-              >
-                Subject
-              </label>
-              <input
-                type="text"
-                name="subject"
-                value={formData.subject}
-                onChange={handleChange}
-                onFocus={() => setFocusedField('subject')}
-                onBlur={() => setFocusedField(null)}
-                className="w-full pt-6 pb-3 px-4 bg-black border border-[#222] rounded-xl text-white outline-none transition-all duration-200 focus:border-[#00D084] focus:shadow-[0_0_20px_rgba(0,208,132,0.1)]"
-                required
-              />
-            </div>
-
-            {/* Message */}
-            <div className="form-field relative">
-              <label
-                className={`absolute left-4 transition-all duration-200 pointer-events-none ${
-                  focusedField === 'message' || formData.message
-                    ? 'top-2 text-xs text-[#00D084]'
-                    : 'top-4 text-[#666]'
-                }`}
-              >
-                Your Message
-              </label>
-              <textarea
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                onFocus={() => setFocusedField('message')}
-                onBlur={() => setFocusedField(null)}
-                rows={5}
-                className="w-full pt-6 pb-3 px-4 bg-black border border-[#222] rounded-xl text-white outline-none transition-all duration-200 focus:border-[#00D084] focus:shadow-[0_0_20px_rgba(0,208,132,0.1)] resize-none"
-                required
-              />
-            </div>
-
-            {/* Submit Button */}
-            <button
-              type="submit"
-              className="w-full py-4 px-8 bg-[#00D084] text-black font-semibold rounded-xl transition-all duration-300 hover:bg-[#00A065] hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(0,208,132,0.4)] flex items-center justify-center gap-2 group relative overflow-hidden"
-            >
-              <span className="relative z-10">Send Message</span>
-              <Send size={18} className="relative z-10 transition-transform duration-300 group-hover:translate-x-1" />
-              <span className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-300" />
-            </button>
-          </form>
         </div>
       </div>
     </section>

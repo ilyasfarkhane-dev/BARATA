@@ -12,7 +12,6 @@ import { ContactSection } from './sections/ContactSection';
 import { Footer } from './sections/Footer';
 import { ProjectDetailsPage } from './pages/ProjectDetailsPage';
 import { ProjectsPage } from './pages/ProjectsPage';
-import { DashboardPage } from './pages/DashboardPage';
 import { useScrollProgress } from './hooks/useScrollProgress';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -85,7 +84,6 @@ function App() {
       />
       <Route path="/projects" element={<ProjectsPage />} />
       <Route path="/project/:id" element={<ProjectDetailsPage />} />
-      <Route path="/dashboard" element={<DashboardPage />} />
     </Routes>
   );
 }

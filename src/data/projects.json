@@ -1,0 +1,49 @@
+{
+  "categories": ["UI/UX Design", "Web Development", "Branding"],
+  "projects": [
+    {
+      "id": "ecommerce-redesign",
+      "title": "E-Commerce Redesign",
+      "category": "UI/UX Design",
+      "description": "Complete redesign of a fashion e-commerce platform",
+      "image": "/images/project-1.jpg",
+      "detailDescription": "A full UX overhaul for a fashion e-commerce brand, focusing on conversion and mobile-first experience. The project included user research, wireframing, high-fidelity design, and design system documentation.",
+      "technologies": ["Figma", "Adobe XD", "Prototyping"],
+      "year": "2024",
+      "link": "https://example.com/ecommerce-demo"
+    },
+    {
+      "id": "saas-dashboard",
+      "title": "SaaS Dashboard",
+      "category": "Web Development",
+      "description": "Analytics dashboard for a fintech startup",
+      "image": "/images/project-2.jpg",
+      "detailDescription": "Built a real-time analytics dashboard for a fintech SaaS product. Features include customizable widgets, data export, and role-based access control.",
+      "technologies": ["React", "TypeScript", "Chart.js"],
+      "year": "2024",
+      "link": "https://example.com/dashboard-demo"
+    },
+    {
+      "id": "brand-identity-system",
+      "title": "Brand Identity System",
+      "category": "Branding",
+      "description": "Comprehensive brand refresh for a tech company",
+      "image": "/images/project-3.jpg",
+      "detailDescription": "End-to-end brand identity project including logo design, color palette, typography, and brand guidelines for a B2B tech company.",
+      "technologies": ["Brand Strategy", "Logo Design", "Style Guide"],
+      "year": "2023",
+      "link": "https://example.com/brand-demo"
+    },
+    {
+      "id": "mobile-app-design",
+      "title": "Mobile App Design",
+      "category": "UI/UX Design",
+      "description": "Fitness tracking app with gamification",
+      "image": "/images/project-4.jpg",
+      "detailDescription": "Designed the full UI/UX for a fitness app that combines tracking with gamification—badges, streaks, and social challenges to boost engagement.",
+      "technologies": ["Figma", "Principle", "User Testing"],
+      "year": "2024",
+      "link": "https://example.com/fitness-app-demo"
+    }
+  ]
+}

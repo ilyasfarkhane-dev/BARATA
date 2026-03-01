@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -71,17 +70,6 @@ export function Footer() {
             © 2026 Othmane Barata. All rights reserved.
           </div>
 
-          {/* Links */}
-          <div className="footer-item flex items-center gap-6">
-            <Link
-              to="/dashboard"
-              className="text-sm text-[#666] transition-all duration-200 hover:text-[#00D084] relative group"
-            >
-              Dashboard
-              <span className="absolute bottom-0 left-0 w-0 h-px bg-[#00D084] transition-all duration-200 group-hover:w-full" />
-            </Link>
-           
-          </div>
         </div>
       </div>
     </footer>
