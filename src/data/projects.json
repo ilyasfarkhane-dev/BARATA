@@ -10,7 +10,7 @@
       "detailDescription": "Web platform enabling users to search and book houses and apartments for rent. Features: search by location, filters (price, number of bedrooms, amenities), detailed property listings, contact form and visit scheduling.",
       "technologies": ["React", "TypeScript", "Tailwind CSS", "Vite"],
       "year": "2024",
-      "link": "https://example.com/location-maisons"
+      "link": "https://iasf-gp69.vercel.app/"
     }
   ]
 }
